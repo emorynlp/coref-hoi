@@ -1,6 +1,8 @@
+This repo is a codebase snapshot of [lxucs/coref-hoi](https://github.com/lxucs/coref-hoi); active issues or updates are maintained in [lxucs/coref-hoi](https://github.com/lxucs/coref-hoi) repository.
+
 # End-to-End Coreference Resolution with Different Higher-Order Inference Methods
 
-This repository contains the implementation of the paper: [Revealing the Myth of Higher-Order Inference in Coreference Resolution](https://arxiv.org/abs/2009.12013).
+This repository contains the implementation of the paper: [Revealing the Myth of Higher-Order Inference in Coreference Resolution](https://www.aclweb.org/anthology/2020.emnlp-main.686.pdf).
 
 ## Architecture
 
@@ -36,8 +38,10 @@ Provided trained models:
 
 The name of each directory corresponds with a **configuration** in [experiments.conf](experiments.conf). Each directory has two trained models inside.
 
+If you want to use the official evaluator, download and unzip [conll 2012 scorer](https://cs.emory.edu/~lxu85/conll-2012.zip) under this directory.
+
 Evaluate a model on the dev/test set:
-* Download the corresponding model directory and put it under `data_dir`
+* Download the corresponding model directory and unzip it under `data_dir`
 * `python evaluate.py [config] [model_id] [gpu_id]`
     * e.g. Attended Antecedent:`python evaluate.py train_spanbert_large_ml0_d2 May08_12-38-29_58000 0`
 
@@ -56,3 +60,17 @@ Some important configurations in [experiments.conf](experiments.conf):
 * `coref_depth` and `higher_order`: controlling the higher-order inference module
 * `bert_pretrained_name_or_path`: the name/path of the pretrained BERT model ([HuggingFace BERT models](https://huggingface.co/transformers/main_classes/model.html#transformers.PreTrainedModel.from_pretrained))
 * `max_training_sentences`: the maximum segments to use when document is too long; for BERT-Large and SpanBERT-Large, set to `3` for 32GB GPU or `2` for 24GB GPU
+
+## Citation
+```
+@inproceedings{xu-choi-2020-revealing,
+    title = "Revealing the Myth of Higher-Order Inference in Coreference Resolution",
+    author = "Xu, Liyan  and  Choi, Jinho D.",
+    booktitle = "Proceedings of the 2020 Conference on Empirical Methods in Natural Language Processing (EMNLP)",
+    month = nov,
+    year = "2020",
+    publisher = "Association for Computational Linguistics",
+    url = "https://www.aclweb.org/anthology/2020.emnlp-main.686",
+    pages = "8527--8533"
+}
+```
